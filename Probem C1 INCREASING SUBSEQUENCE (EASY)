@@ -1,0 +1,62 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define int long long
+#define endl "\n"
+const int mod=1e9+7;
+#define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+#define clr(a,x) memset(a,x,sizeof(a))
+#define T int t;cin>>t; while(t--)
+#define vll vector<int>
+#define pb push_back
+#define sz size
+//convert integer to string
+#define str to_string
+int32_t main()
+{
+ int n,x=0,p=-1;
+ cin>>n;
+ vll a;
+ string s="";
+ for(int i=0;i<n;i++)
+ {
+   cin>>x;
+   a.pb(x);
+ }
+ int i=0,j=n-1,k=0;
+ for(int z=0;z<n;z++)
+   {
+    if(a[i]>p && a[j]>p)
+    {
+      int x=min(a[i],a[j]);
+      if(x==a[i])
+      {
+        p=a[i];
+        k++;
+        s+='L';
+        i++;
+      }
+      else
+      {
+        p=a[j];
+        j--;
+        k++;
+        s+='R';
+      }
+    }
+    else if(a[i]>p)
+    {
+      p=a[i];
+      i++;
+      k++;
+      s+='L';
+    }
+    else if(a[j]>p)
+    {
+      p=a[j];
+      j--;
+      k++;
+      s+='R';
+    }
+   }
+ cout<<k<<endl<<s;
+}
