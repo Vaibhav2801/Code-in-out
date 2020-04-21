@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+#include <string>
+using namespace std;
+#define int long long
+#define endl "\n"
+const int mod=1e9+7;
+#define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+#define clr(a,x) memset(a,x,sizeof(a))
+#define T int t;cin>>t; while(t--)
+#define vll vector<int>
+#define pb push_back
+#define sz size
+#define str to_string
+#define intt stoll
+int32_t main()
+{
+  vector<int> v;
+    for(int i=1;i<6;i++){
+      string s="" ;
+      for(int j=0;j<i;j++){s+='4';s+='7';}
+      sort(s.begin(), s.end());
+    do { 
+      v.push_back(stoll(s));
+    } while (next_permutation(s.begin(), s.end())); 
+    }
+    sort(v.begin(),v.end());
+    int n;
+    cin>>n;
+    for(int i=0;i<v.size();i++){
+       cout<<v[i]<<"  "; 
+      if(v[i]>=n){
+        cout<<v[i]<<endl;
+        break;
+      }
+    }
+}
