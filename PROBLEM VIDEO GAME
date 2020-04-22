@@ -1,0 +1,65 @@
+#include<bits/stdc++.h>
+#include <string>
+using namespace std;
+#define int long long
+#define endl "\n"
+const int mod=1e9+7;
+#define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+#define clr(a,x) memset(a,x,sizeof(a))
+#define T int t;cin>>t; while(t--)
+#define vll vector<int>
+#define pb push_back
+#define sz size
+#define str to_string
+#define intt stoll
+int32_t main()
+{
+ int n,h,x,c,b=1,d=0;
+ cin>>n>>h;
+ vll v;
+ for(int i=0;i<n;i++)
+ {
+ cin>>c;
+ v.pb(c);
+ }
+ while(1)
+ {
+     cin>>x;
+    if(x==1)
+    {
+        if(b!=1)
+        b--;
+        else 
+        continue;
+    }
+    else if(x==2)
+    {
+        if(b!=n)
+        b++;
+        else
+        continue;
+    }
+    else if(x==3)
+    {
+        if(v[b-1]>0 && d==0)
+        {v[b-1]--;
+        d=1;}
+        else
+        continue;
+    }
+    else if(x==4)
+    {
+        if(v[b-1]<h && d==1)
+        {
+            v[b-1]++;
+            d=0;
+        }
+        else 
+        continue;
+    }
+    else 
+    break;
+ }
+ for(int i=0;i<n;i++)
+ cout<<v[i]<<" ";
+}
