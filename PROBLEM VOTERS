@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+#include <string>
+using namespace std;
+#define int long long
+#define endl "\n"
+const int mod=1e9+7;
+#define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+#define clr(a,x) memset(a,x,sizeof(a))
+#define T int t;cin>>t; while(t--)
+#define vll vector<int>
+#define pb push_back
+#define sz size
+#define str to_string
+#define intt stoll
+int32_t main()
+{
+ int a,b,c,x,e=0;
+ cin>>a>>b>>c;
+ vll v;
+ for(int i=0;i<a+b+c;i++)
+ {
+    cin>>x;
+    v.pb(x);
+}
+sort(v.begin(),v.end());
+x=v[(a+b+c)-1];
+int d[x]={0};
+for(int i=0;i<v.size();i++)
+{d[v[i]]++;}
+for(int i=0;i<x;i++)
+{
+    if(d[i]>=2)
+    e++;
+}
+cout<<e<<endl;
+for(int i=0;i<x;i++)
+{
+    if(d[i]>=2)
+    cout<<i<<endl;
+}
+ 
+}
