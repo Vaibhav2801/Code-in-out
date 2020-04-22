@@ -1,0 +1,105 @@
+#include<bits/stdc++.h>
+#include <string>
+using namespace std;
+#define int long long
+#define endl "\n"
+const int mod=1e9+7;
+#define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+#define clr(a,x) memset(a,x,sizeof(a))
+#define T int t;cin>>t; while(t--)
+#define vll vector<int>
+#define pb push_back
+#define sz size
+#define str to_string
+#define intt stoll
+int32_t main()
+{
+ int n,x=0;
+ cin>>n;
+ vll a;
+ int p=0,q=n-1,l=-1,k=0;
+ for(int i=0;i<n;i++)
+ {
+     cin>>x;
+     a.pb(x);
+ }
+ string s="";
+ for(int i=0;i<n;i++)
+ {
+     if(a[p]>l && a[q]>l && a[p]!=a[q])
+     {
+         l=min(a[p],a[q]);
+         if(l==a[p])
+         {
+          p++;
+          k++;
+          s+='L';
+         }
+         else
+         {
+             q--;
+             k++;
+             s+='R';
+         }
+       // cout<<"a"<<" ";
+     }
+     else if(a[p]==a[q] && p!=q && a[p]>l)
+     {
+        int y=0,z=0;
+        x=a[p];
+        for(int i=p+1;i<q;i++)
+        {
+      if(a[i]>x)
+      {
+          x=a[i];
+          y++;
+      }
+      else{break;}
+        }
+        x=a[q];
+        for(int i=q-1;i>p;i--)
+        {
+      if(a[i]>x)
+      {
+          x=a[i];
+          z++;
+      }
+      else 
+      {break; }
+        }
+    if(y>z)
+    {
+        l=a[p];
+        p++;
+        k++;
+        s+='L';
+    }
+    else 
+    {
+     l=a[q];
+     q--;
+     k++;
+     s+='R';
+    }
+       // cout<<"b"<<" "<<y<<" "<<z;
+     }
+     else if(a[p]>l)
+     {
+      l=a[p];
+      p++;
+      k++;
+      s+='L';
+     // cout<<"c"<<" ";
+     }
+     else if(a[q]>l)
+     {
+         l=a[q];
+         q--;
+         k++;
+         s+='R';
+        //cout<<"d"<<" ";
+     }
+ //cout<<k<<" "<<l<<endl<<s<<endl;
+ }
+cout<<k<<endl<<s;
+}
