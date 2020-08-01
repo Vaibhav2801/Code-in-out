@@ -1,0 +1,71 @@
+#include<bits/stdc++.h>
+ using namespace std;
+ #define int long long
+ #define endl "\n"
+ const double pi=3.141593;
+ const double mod=1e9+7;
+ #define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+ #define clr(a,x) memset(a,x,sizeof(a))
+ #define T double t;cin>>t; while(t--)
+ #define vll vector<int>
+ #define v22 vactor<vector<double>>
+#define pb push_back
+ #define sz size
+ #define str to_string
+ #define intt stoll
+ #define sv(x) sort(x.begin(),x.end())
+ #define vp vector<pair<double, double>> b(n)    
+ const double N = 50000; 
+ int32_t main()
+ {
+ int n,x=0,c=0;
+ cin>>n;
+ int dp[6]={0};
+ for(int i=0;i<n;i++)
+ {
+   cin>>x;
+    if(x==4)
+    dp[0]++;
+  if(x==8)
+  {
+    if(dp[0]>dp[1])
+    dp[1]++;
+    else 
+    c++;
+  }
+  if(x==15)
+  {
+    if(dp[1]>dp[2])
+    dp[2]++;
+    else 
+    c++;
+  }
+  if(x==16)
+  {
+    if(dp[2]>dp[3])
+    dp[3]++;
+    else 
+    c++;
+  }
+  if(x==23)
+  {
+    if(dp[3]>dp[4])
+    dp[4]++;
+    else 
+    c++;
+  }
+  if(x==42)
+  {
+    if(dp[4]>dp[5])
+    dp[5]++;
+    else 
+    c++;
+  }
+ }
+ for(int i=0;i<6;i++)
+ {
+   c+=dp[i]-dp[5];
+ }
+ cout<<c;
+ }
+ 
