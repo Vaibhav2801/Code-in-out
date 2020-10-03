@@ -1,0 +1,85 @@
+#include<bits/stdc++.h>
+ using namespace std;
+ #define int long long
+ #define double long double
+ #define endl "\n"
+ const double pi=3.141593;
+ const int mod=1e9+7;
+ #define fast_io ios_base::sync_with_stdio(false)
+ #define clr(a,x) memset(a,x,sizeof(a))
+ #define T double t;cin>>t; while(t--)
+ #define vll vector<int>
+ #define v22 vactor<vector<double>>
+ #define pb push_back
+ #define lb lower_bound
+ #define ub upper_bound
+ #define b_s binary_search
+ #define ff first
+ #define ss second
+ #define str to_string
+ #define intt stoll
+ #define sv(x) sort(x.begin(),x.end())
+ #define all(x) x.begin(),x.end()
+ #define vp vector<pair<int,int>> 
+ vector<int> adj[500001];
+ typedef pair<int, int> pairs;
+ int t[4*100]={0};
+ void calculatesum(vector<int> a ,int v,int tl,int tr)
+ {
+     if(tl==tr)
+     t[v]=a[tl];
+     else 
+     {
+         cout<<1<<endl;
+         int tm=(tl+tr)/2;
+         calculatesum(a,v*2,tl,tm);
+         calculatesum(a,v*2+1,tm+1,tr);
+         t[v]=t[v*2]+t[v*2+1];
+     }
+ }
+void update(int v,int tl,int tr,int pos,int nval)
+{
+    if(tl==tr)
+    t[v]=nval;
+    else 
+    {
+        int tm=(tl+tr)/2;
+        if(pos<=tm)
+        update(v*2,tl,tm,pos,nval);
+        else 
+        update(v*2+1,tm+1,tr,pos,nval);
+        t[v]=t[2*v]+t[2*v+1];
+    }
+}
+int getsum(int v, int tl,  int tr, int l, int r){
+    if(l>r)
+    return 0;
+    if(l==tl && r==tr)
+    return t[v];
+    int tm=(tl+tr)/2;
+    return getsum(2*v,tl,tm,l,min(tm,r))  + getsum(2*v+1,tm+1,tr,max(l,tm+1),r);
+}
+ int32_t main()
+ {
+int n,q,x,pos,nval,l,r;
+cin>>n>>q;
+vll a(n);
+for(int i=0;i<n;i++)
+cin>>a[i];
+calculatesum(a,1,0,n-1);
+for(int i=0;i<q;i++)
+{
+    cin>>x;
+    if(x==1)
+    {
+        cin>>pos>>nval;
+        pos--;
+        update(1,0,n-1,pos,nval);
+    }
+    else{
+        cin>>l>>r;
+        l--,r--;
+        cout<<getsum(1,0,n-1,l,r)<<endl;
+    }
+}
+ }
